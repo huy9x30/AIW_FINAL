@@ -4,19 +4,36 @@
 <title>Bayram Newspaper</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('css\style.css') }}" media="screen" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css\bootstrap.min.css')}}" />
 </head>
 <body id="top">
+  <style media="screen">
+    body {
+        font-family: 'PT Serif',serif;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    #main-nav a {
+      font-weight: bold;
+      color: black;
+    }
+
+    #main-nav a:hover {
+      color: black;
+    }
+
+    #navigation {
+      border-bottom: 1px solid #CCC;
+      margin-bottom: 50px;
+    }
+  </style>
 <div id="network">
   <div class="center-wrapper">
     <div class="left">{{ $time }}<span class="text-separator"></div>
     <div class="right">
-      <!-- <ul class="tabbed" id="network-tabs">
-        <li class="current-tab"><a href="#">Simple Magazine</a></li>
-        <li><a href="#">Network site</a></li>
-        <li><a href="#">Network site 2</a></li>
-      </ul>
-      <div class="clearer">&nbsp;</div> -->
     </div>
     <div class="clearer">&nbsp;</div>
   </div>
@@ -25,8 +42,7 @@
   <div class="center-wrapper">
     <div id="header">
       <div class="right" id="toolbar">
-      <!--  Text size <a href="#"><img src="img/icon-plus.gif" width="20" height="20" alt="" /></a> <a href="#"><img src="img/icon-minus.gif" width="20" height="20" alt="" /></a>
-       --></div>
+      </div>
       <div class="clearer">&nbsp;</div>
       <div id="site-title">
         <h1><a href="{{ url('/') }}">Bayram Newspaper</a></h1>
@@ -64,7 +80,6 @@
 
               </li>
                 @endforeach
-              <li><a href="{{ url('/all') }}" class="more">Read all &#187;</a></li>
             </ul>
           </div>
         </div>

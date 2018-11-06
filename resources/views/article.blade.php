@@ -11,14 +11,35 @@
       		width: 100%;
       	}
 
-        div.related {
-          width: 50%;
+        div.related img {
+          height: 200px;
+          width: 320px;
+        }
+
+        .post-title {
+          margin-bottom:10px;
+        }
+
+        .post-date {
+          margin-bottom: 30px;
+          padding: 5px;
+          border-top:1px solid #eee;
+          border-bottom:1px solid #eee;
+        }
+
+        .post-body {
+          color: black;
+        }
+
+        h2 {
+          margin-top: 0;
         }
 	    </style>
+
         <div class="post-title">
-          <h2><a href="{{ url('/article/' .$article->id) }}">{{ $article->title }}</a></h2>
+          <h2><b>{{ $article->title }}</b></h2>
         </div>
-        <div class="post-date">{{ $article->date_posted }} posted by {{ $article->author }}</div>
+        <div class="post-date">{{ $article->date_posted }} by {{ $article->author }}</div>
         <div class="post-body">
          <!--  <p><a href="#"><img src="news-image-big.jpg" alt="" class="bordered" /></a></p>
           <p class="large">This is a free website template by Arcsin, built using tableless XHTML and CSS.</p>
@@ -70,7 +91,7 @@
       @foreach($relatedNews as $item)
       <div class="content-separator"></div>
       <div class="post row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="related col-xs-12 col-sm-6">
           <a href="{{ url('/article/' .$item->id) }}">
             <img src="{{ $item->picture }}" alt="{{ $item->title }}" class="left bordered" />
           </a>
