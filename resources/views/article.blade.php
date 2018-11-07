@@ -16,6 +16,21 @@
           width: 320px;
         }
 
+        div.related h3 {
+          margin-top: 0;
+        }
+
+        div.post-tag a,
+        div.related a {
+          color: black;
+        }
+
+        div.post-tag a:hover,
+        div.related a:hover {
+          color: #337ab7;
+          text-decoration: none;
+        }
+
         .post-title {
           margin-bottom:10px;
         }
@@ -31,8 +46,16 @@
           color: black;
         }
 
+        .post-tag {
+          margin-bottom: 30px;
+        }
+
         h2 {
           margin-top: 0;
+        }
+
+        .comment {
+          margin-bottom: 50px;
         }
 	    </style>
 
@@ -45,30 +68,12 @@
           <p class="large">This is a free website template by Arcsin, built using tableless XHTML and CSS.</p>
           --> <p>{!! $article->content !!}</p>
         </div>
-        <div class="post-date" style="text-align: right">Tags :
+        <div class="post-tag" style="text-align: right">Tags :
           @foreach ($tags as $tag)
           <a href="{{ url('/tag/' .$tag) }}">{{ $tag }}</a>,
           @endforeach
         </div>
-      @if(count($comments)>0)
-        <h2 style="background-color: lightblue">Bình luận</h2>
-        @foreach($comments as $comment)
-
-            <h3 style="color: green">{{ $comment->user_name }}</h3>
-          <!-- </div> -->
-          <div class="post-date">{{ $comment->created_at }}</div>
-          <!-- <div class="post-body"> -->
-              <p>{{ $comment->content }}</p>
-          <!-- </div> -->
-      <div class="content-separator"></div>
-        @endforeach
-
-      @else
-
-      @endif
-        <br>
-      <div style="background-color: lightgray; padding: 10px">
-
+      <div class="comment">
           <h5><b>Leave your comment</b></h5>
           <form method="post" action="{{ url('/article/' .$article->id) }}">
             <div class="form-group">
@@ -83,30 +88,45 @@
             {{ csrf_field() }}
             <button type="submit" class="btn btn-default">Comment</button>
           </form>
+          @if(count($comments)>0)
+            @foreach($comments as $comment)
+
+                <h3>{{ $comment->user_name }}</h3>
+              <!-- </div> -->
+              <div class="comment-date"><small>{{ $comment->created_at }}</div>
+              <!-- <div class="post-body"> -->
+                  <p>{{ $comment->content }}</p>
+              <!-- </div> -->
+            @endforeach
+          @endif
       </div>
 
-      <hr>
       <h1>Other news</h1>
-
-      @foreach($relatedNews as $item)
-      <div class="content-separator"></div>
-      <div class="post row">
-        <div class="related col-xs-12 col-sm-6">
-          <a href="{{ url('/article/' .$item->id) }}">
-            <img src="{{ $item->picture }}" alt="{{ $item->title }}" class="left bordered" />
-          </a>
+      @if(count($relatedNews) > 0)
+        @foreach($relatedNews as $item)
+        <div class="content-separator"></div>
+        <div class="post row">
+          <div class="related col-xs-12 col-sm-6">
+            <a href="{{ url('/article/' .$item->id) }}">
+              <img src="{{ $item->picture }}" alt="{{ $item->title }}" class="left bordered" />
+            </a>
+          </div>
+          <div class="related col-xs-12 col-sm-6">
+            <h3><a href="{{ url('/article/' .$item->id) }}">{{ $item->title }}</a></h3>
+            <p>
+              {{ $item->sub_content }}
+              <br>
+              <a href="{{ url('/article/' .$item->id) }}" class="more">Read more &#187;</a>
+            </p>
+          </div>
+          <div class="clearer">&nbsp;</div>
         </div>
-        <div class="col-xs-12 col-sm-6">
-          <h3><a href="{{ url('/article/' .$item->id) }}">{{ $item->title }}</a></h3>
-          <p>
-            {{ $item->sub_content }}
-            <br>
-            <a href="{{ url('/article/' .$item->id) }}" class="more">Read more &#187;</a>
-          </p>
+        @endforeach
+      @else
+        <div class="text-center">
+          Sorry, we do not have other news in this subject.
         </div>
-        <div class="clearer">&nbsp;</div>
-      </div>
-      @endforeach
+      @endif
       <div class="content-separator"></div>
 
     </div>

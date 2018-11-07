@@ -29,7 +29,10 @@ class ArticleController extends Controller
     {
         $article = Article::find($article_id);
         $category_id = $article->category_id;
-        $relatedNews = Article::where('category_id', $category_id)->take(5)->get();
+        $relatedNews = Article::where([
+            ['category_id', $category_id],
+            ['id', '!=', $article_id]
+          ])->take(5)->get();
         $comments = Comment::where('article_id', $article_id)->get();
         $tags = explode(",", $article->tags);
 

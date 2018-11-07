@@ -15,6 +15,15 @@
             text-decoration: none;
             margin-bottom: 5px;
           }
+
+           a {
+            color: black !important;
+          }
+
+          a:hover {
+            color: #337ab7 !important;
+            text-decoration: none !important;
+          }
         </style>
         @if(isset($categoryName))
         <div class="text-center">

@@ -29,6 +29,20 @@
       border-bottom: 1px solid #CCC;
       margin-bottom: 50px;
     }
+
+    .nice-list a {
+      color: black !important;
+    }
+
+    .nice-list a:hover {
+      color: #337ab7 !important;
+      text-decoration: none !important;
+    }
+
+    ul.tabbed a:hover {
+      color: #337ab7 !important;
+    }
+
   </style>
 <div id="network">
   <div class="center-wrapper">
