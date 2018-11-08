@@ -136,7 +136,7 @@
     <div id="footer">
       <div class="left">&copy; 2018 Bayram Newspaper <span class="text-separator">&rarr;</span>
             @foreach($categories as $category)
-            <a href="{{ url('/' .$category->path) }}">{{ $category->name }}</a> <span class="text-separator">|</span>
+            <a href="{{ url('/category/' .$category->path) }}">{{ $category->name }}</a> <span class="text-separator">|</span>
             @endforeach
       </div>
       <!-- <div class="right"><a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a></div> -->
